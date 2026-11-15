@@ -1,0 +1,339 @@
+Empire at War - Force Commander-style camera mod: every change it makes
+======================================================================
+
+Empire at War  (GameData\StarWarsG.exe)
+----------------------------------------------------------------------
+Original MD5 D5BA4A4EA7100DC0C95032DBB8D852FA, patched MD5 B8F8099BD51CF1C71F113D6214217D4A, size 11511808
+
+file offset 0x270, 2 bytes
+  .text section header: VirtualSize 0x75BE37 -> 0x75C000 (= SizeOfRawData, maps the code cave)
+
+file offset 0x3E44E0 (VA 0x1403E50E0), 9 bytes
+  old: 40 38 b7 80 00 00 00 74 77
+  new: e9 53 7d 37 00 90 90 90 90
+    1403e50e0: jmp 0x14075ce38
+    1403e50e5: nop 
+    1403e50e6: nop 
+    1403e50e7: nop 
+    1403e50e8: nop 
+
+file offset 0x75C238 (VA 0x14075CE38), 320 bytes
+  old: unused zero padding at the end of .text
+  new: eb 16 48 83 c4 40 40 38 b7 80 00 00 00 0f 84 15 83 c8 ff e9 99 82 c8 ff 48 83 ec 40 48 8b 4f 30 48 85 c9 74 dd 80 3f 00 74 d8 48 8b 01 ff 90 d0 01 00 00 48 85 c0 74 ca 48 89 44 24 30 31 c0 48 89 44 24 38 b9 51 00 00 00 ff 15 01 0a 00 00 66 85 c0 79 04 ff 4c 24 38 b9 45 00 00 00 ff 15 ed 09 00 00 66 85 c0 79 04 ff 44 24 38 b9 43 00 00 00 ff 15 d9 09 00 00 66 85 c0 79 04 ff 4c 24 3c b9 5a 00 00 00 ff 15 c5 09 00 00 66 85 c0 79 04 ff 44 24 3c 48 8b 44 24 38 48 85 c0 0f 84 60 ff ff ff 48 8b 4c 24 30 48 8d 15 3a b9 1f 00 80 b9 0e 01 00 00 00 74 07 48 8b 91 48 01 00 00 f3 0f 2a 44 24 38 f3 0f 59 05 64 00 00 00 f3 0f 59 c7 f3 0f 58 41 14 f3 0f 10 0d 5b 00 00 00 0f 57 d2 0f 2f c2 73 06 f3 0f 58 c1 eb f5 0f 2f c1 72 06 f3 0f 5c c1 eb f5 f3 0f 5f 42 20 f3 0f 5d 42 24 f3 0f 11 41 14 f3 0f 2a 44 24 3c f3 0f 59 05 21 00 00 00 f3 0f 59 c7 f3 0f 58 41 10 f3 0f 5f 42 04 f3 0f 5d 42 08 f3 0f 11 41 10 e9 d2 fe ff ff 00 00 b4 42 00 00 34 42 00 00 b4 43 90 90 90 90
+    14075ce38: jmp 0x14075ce50
+    14075ce3a: add rsp, 0x40
+    14075ce3e: cmp byte ptr [rdi + 0x80], sil
+    14075ce45: je 0x1403e5160
+    14075ce4b: jmp 0x1403e50e9
+    14075ce50: sub rsp, 0x40
+    14075ce54: mov rcx, qword ptr [rdi + 0x30]
+    14075ce58: test rcx, rcx
+    14075ce5b: je 0x14075ce3a
+    14075ce5d: cmp byte ptr [rdi], 0
+    14075ce60: je 0x14075ce3a
+    14075ce62: mov rax, qword ptr [rcx]
+    14075ce65: call qword ptr [rax + 0x1d0]
+    14075ce6b: test rax, rax
+    14075ce6e: je 0x14075ce3a
+    14075ce70: mov qword ptr [rsp + 0x30], rax
+    14075ce75: xor eax, eax
+    14075ce77: mov qword ptr [rsp + 0x38], rax
+    14075ce7c: mov ecx, 0x51
+    14075ce81: call qword ptr [rip + 0xa01]
+    14075ce87: test ax, ax
+    14075ce8a: jns 0x14075ce90
+    14075ce8c: dec dword ptr [rsp + 0x38]
+    14075ce90: mov ecx, 0x45
+    14075ce95: call qword ptr [rip + 0x9ed]
+    14075ce9b: test ax, ax
+    14075ce9e: jns 0x14075cea4
+    14075cea0: inc dword ptr [rsp + 0x38]
+    14075cea4: mov ecx, 0x43
+    14075cea9: call qword ptr [rip + 0x9d9]
+    14075ceaf: test ax, ax
+    14075ceb2: jns 0x14075ceb8
+    14075ceb4: dec dword ptr [rsp + 0x3c]
+    14075ceb8: mov ecx, 0x5a
+    14075cebd: call qword ptr [rip + 0x9c5]
+    14075cec3: test ax, ax
+    14075cec6: jns 0x14075cecc
+    14075cec8: inc dword ptr [rsp + 0x3c]
+    14075cecc: mov rax, qword ptr [rsp + 0x38]
+    14075ced1: test rax, rax
+    14075ced4: je 0x14075ce3a
+    14075ceda: mov rcx, qword ptr [rsp + 0x30]
+    14075cedf: lea rdx, [rip + 0x1fb93a]
+    14075cee6: cmp byte ptr [rcx + 0x10e], 0
+    14075ceed: je 0x14075cef6
+    14075ceef: mov rdx, qword ptr [rcx + 0x148]
+    14075cef6: cvtsi2ss xmm0, dword ptr [rsp + 0x38]
+    14075cefc: mulss xmm0, dword ptr [rip + 0x64]
+    14075cf04: mulss xmm0, xmm7
+    14075cf08: addss xmm0, dword ptr [rcx + 0x14]
+    14075cf0d: movss xmm1, dword ptr [rip + 0x5b]
+    14075cf15: xorps xmm2, xmm2
+    14075cf18: comiss xmm0, xmm2
+    14075cf1b: jae 0x14075cf23
+    14075cf1d: addss xmm0, xmm1
+    14075cf21: jmp 0x14075cf18
+    14075cf23: comiss xmm0, xmm1
+    14075cf26: jb 0x14075cf2e
+    14075cf28: subss xmm0, xmm1
+    14075cf2c: jmp 0x14075cf23
+    14075cf2e: maxss xmm0, dword ptr [rdx + 0x20]
+    14075cf33: minss xmm0, dword ptr [rdx + 0x24]
+    14075cf38: movss dword ptr [rcx + 0x14], xmm0
+    14075cf3d: cvtsi2ss xmm0, dword ptr [rsp + 0x3c]
+    14075cf43: mulss xmm0, dword ptr [rip + 0x21]
+    14075cf4b: mulss xmm0, xmm7
+    14075cf4f: addss xmm0, dword ptr [rcx + 0x10]
+    14075cf54: maxss xmm0, dword ptr [rdx + 4]
+    14075cf59: minss xmm0, dword ptr [rdx + 8]
+    14075cf5e: movss dword ptr [rcx + 0x10], xmm0
+    14075cf63: jmp 0x14075ce3a
+    14075cf68: add byte ptr [rax], al
+    14075cf6a: mov ah, 0x42
+    14075cf6c: add byte ptr [rax], al
+    14075cf6e: xor al, 0x42
+    14075cf70: add byte ptr [rax], al
+    14075cf72: mov ah, 0x43
+    14075cf74: nop 
+    14075cf75: nop 
+    14075cf76: nop 
+    14075cf77: nop 
+
+Data\XML\GameConstants.xml (written from the game's own MEG archives):
+  <Land_Tactical_Camera_Locked> True -> False  (land battles use the "Unlocked" camera)
+
+Data\XML\TacticalCameras.xml (written from the game's own MEG archives), "Unlocked" camera replaced with:
+
+  	<!-- Unlocked = copy of Land_Mode (used for land when Land_Tactical_Camera_Locked is False), pitch freed, splines off -->
+  	<TacticalCamera Name="Unlocked">
+  
+  		<Pitch_Default>50</Pitch_Default>  <!-- 45 -->
+  		<Pitch_Min>10</Pitch_Min> <!-- 45 -->
+  		<Pitch_Max>85</Pitch_Max> <!-- 85 -->
+  		<Pitch_Per_Mouse_Unit>-1.5</Pitch_Per_Mouse_Unit>
+          <Pitch_Per_Zoom_Unit>-30.0</Pitch_Per_Zoom_Unit>   <!-- -17 -->
+          <Pitch_When_Zoomed_In>15.0</Pitch_When_Zoomed_In>
+          <Pitch_Zoom_Begin_Fraction>0.1</Pitch_Zoom_Begin_Fraction>
+  
+  		<Yaw_Default>0.0</Yaw_Default>
+  		<Yaw_Min>-1000.0</Yaw_Min>
+  		<Yaw_Max>1000.0</Yaw_Max>
+  		<Yaw_Per_Mouse_Unit>1.5</Yaw_Per_Mouse_Unit>
+  		
+  		<Fov_Default>55.0</Fov_Default>
+  		<Fov_Max>55.0</Fov_Max>
+  		<Fov_Min>25.0</Fov_Min>
+  		<Fov_Smooth_Time>0.05</Fov_Smooth_Time>
+  		<Fov_Per_Mouse_Unit>0</Fov_Per_Mouse_Unit>   <!-- 12.5 -->
+  		
+  		<Distance_Default>460.0</Distance_Default> 
+  		<Distance_Max>460.0</Distance_Max>   <!-- 450  -->
+  		<Distance_Min>170.0</Distance_Min>
+  		<Distance_Smooth_Time>0.21</Distance_Smooth_Time>
+  		<Distance_Per_Mouse_Unit>100.0</Distance_Per_Mouse_Unit>  <!-- 70 -->
+  
+          <!-- Land mode uses a spline for the distance and pitch -->
+          <Use_Splines>no</Use_Splines>
+          <Pitch_Spline>   0.0,17.0, 0.35,45.0, 1.0, 55.0, 1.1,55 </Pitch_Spline>
+          <Distance_Spline>0.0 170.0, 0.3, 220.0, 1.0, 460.0 </Distance_Spline>   <!-- compensating for zoom-in creep bug  -->
+          <Spline_Steps>15</Spline_Steps>
+  
+          <Tactical_Overview_Distance>1000.0</Tactical_Overview_Distance>
+          <Tactical_Overview_Pitch>65.0</Tactical_Overview_Pitch>
+          <Tactical_Overview_FOV>55.0</Tactical_Overview_FOV>
+          <Tactical_Overview_Clicks>4</Tactical_Overview_Clicks>              <!-- code expects this many clicks --> 
+          <Tactical_Overview_Click_Time>1.5</Tactical_Overview_Click_Time>    <!-- within this amount of time -->
+  
+          <Tactical_Overview_Distance2>1600.0</Tactical_Overview_Distance2>
+          <Tactical_Overview_Pitch2>80.0</Tactical_Overview_Pitch2>
+          <Tactical_Overview_FOV2>70.0</Tactical_Overview_FOV2>
+  
+          <!-- smoothness of terrain height following -->
+  		<Location_Follows_Terrain>1</Location_Follows_Terrain>
+  		<Location_Height_Up_Smooth_Time>0.3</Location_Height_Up_Smooth_Time>
+          <Location_Height_Down_Smooth_Time>1.0</Location_Height_Down_Smooth_Time>
+          <Min_Height_Above_Terrain>20.0</Min_Height_Above_Terrain>
+  
+  		<Near_Clip>10.0</Near_Clip>
+  		<Far_Clip>60000.0</Far_Clip>	<!-- stock Unlocked value (Land_Mode 7000); main menu backdrop uses this camera -->
+  
+          <Object_Fade_Begin>10000.0f</Object_Fade_Begin>
+          <Object_Fade_End>11000.0f</Object_Fade_End>
+          
+          <Side_Bounds_Buffer>0.0f</Side_Bounds_Buffer>
+          <Top_Bounds_Buffer>0.0f</Top_Bounds_Buffer>
+          <Bottom_Bounds_Buffer>0.0f</Bottom_Bounds_Buffer>
+  
+  	</TacticalCamera>
+
+Forces of Corruption  (corruption\StarWarsG.exe)
+----------------------------------------------------------------------
+Original MD5 9E33479AC8D0ACAD1BB04578DFEDAEEF, patched MD5 67D2D6B6B3FF0BE1B9B80A36D3309E11, size 12428800
+
+file offset 0x268, 2 bytes
+  .text section header: VirtualSize 0x7FB4B7 -> 0x7FB600 (= SizeOfRawData, maps the code cave)
+
+file offset 0x44B320 (VA 0x14044BF20), 9 bytes
+  old: 40 38 b7 80 00 00 00 74 77
+  new: e9 93 05 3b 00 90 90 90 90
+    14044bf20: jmp 0x1407fc4b8
+    14044bf25: nop 
+    14044bf26: nop 
+    14044bf27: nop 
+    14044bf28: nop 
+
+file offset 0x7FB8B8 (VA 0x1407FC4B8), 320 bytes
+  old: unused zero padding at the end of .text
+  new: eb 16 48 83 c4 40 40 38 b7 80 00 00 00 0f 84 d5 fa c4 ff e9 59 fa c4 ff 48 83 ec 40 48 8b 4f 30 48 85 c9 74 dd 80 3f 00 74 d8 48 8b 01 ff 90 e8 01 00 00 48 85 c0 74 ca 48 89 44 24 30 31 c0 48 89 44 24 38 b9 51 00 00 00 ff 15 81 13 00 00 66 85 c0 79 04 ff 4c 24 38 b9 45 00 00 00 ff 15 6d 13 00 00 66 85 c0 79 04 ff 44 24 38 b9 43 00 00 00 ff 15 59 13 00 00 66 85 c0 79 04 ff 4c 24 3c b9 5a 00 00 00 ff 15 45 13 00 00 66 85 c0 79 04 ff 44 24 3c 48 8b 44 24 38 48 85 c0 0f 84 60 ff ff ff 48 8b 4c 24 30 48 8d 15 8a e1 22 00 80 b9 0e 01 00 00 00 74 07 48 8b 91 48 01 00 00 f3 0f 2a 44 24 38 f3 0f 59 05 64 00 00 00 f3 0f 59 c7 f3 0f 58 41 14 f3 0f 10 0d 5b 00 00 00 0f 57 d2 0f 2f c2 73 06 f3 0f 58 c1 eb f5 0f 2f c1 72 06 f3 0f 5c c1 eb f5 f3 0f 5f 42 20 f3 0f 5d 42 24 f3 0f 11 41 14 f3 0f 2a 44 24 3c f3 0f 59 05 21 00 00 00 f3 0f 59 c7 f3 0f 58 41 10 f3 0f 5f 42 04 f3 0f 5d 42 08 f3 0f 11 41 10 e9 d2 fe ff ff 00 00 b4 42 00 00 34 42 00 00 b4 43 90 90 90 90
+    1407fc4b8: jmp 0x1407fc4d0
+    1407fc4ba: add rsp, 0x40
+    1407fc4be: cmp byte ptr [rdi + 0x80], sil
+    1407fc4c5: je 0x14044bfa0
+    1407fc4cb: jmp 0x14044bf29
+    1407fc4d0: sub rsp, 0x40
+    1407fc4d4: mov rcx, qword ptr [rdi + 0x30]
+    1407fc4d8: test rcx, rcx
+    1407fc4db: je 0x1407fc4ba
+    1407fc4dd: cmp byte ptr [rdi], 0
+    1407fc4e0: je 0x1407fc4ba
+    1407fc4e2: mov rax, qword ptr [rcx]
+    1407fc4e5: call qword ptr [rax + 0x1e8]
+    1407fc4eb: test rax, rax
+    1407fc4ee: je 0x1407fc4ba
+    1407fc4f0: mov qword ptr [rsp + 0x30], rax
+    1407fc4f5: xor eax, eax
+    1407fc4f7: mov qword ptr [rsp + 0x38], rax
+    1407fc4fc: mov ecx, 0x51
+    1407fc501: call qword ptr [rip + 0x1381]
+    1407fc507: test ax, ax
+    1407fc50a: jns 0x1407fc510
+    1407fc50c: dec dword ptr [rsp + 0x38]
+    1407fc510: mov ecx, 0x45
+    1407fc515: call qword ptr [rip + 0x136d]
+    1407fc51b: test ax, ax
+    1407fc51e: jns 0x1407fc524
+    1407fc520: inc dword ptr [rsp + 0x38]
+    1407fc524: mov ecx, 0x43
+    1407fc529: call qword ptr [rip + 0x1359]
+    1407fc52f: test ax, ax
+    1407fc532: jns 0x1407fc538
+    1407fc534: dec dword ptr [rsp + 0x3c]
+    1407fc538: mov ecx, 0x5a
+    1407fc53d: call qword ptr [rip + 0x1345]
+    1407fc543: test ax, ax
+    1407fc546: jns 0x1407fc54c
+    1407fc548: inc dword ptr [rsp + 0x3c]
+    1407fc54c: mov rax, qword ptr [rsp + 0x38]
+    1407fc551: test rax, rax
+    1407fc554: je 0x1407fc4ba
+    1407fc55a: mov rcx, qword ptr [rsp + 0x30]
+    1407fc55f: lea rdx, [rip + 0x22e18a]
+    1407fc566: cmp byte ptr [rcx + 0x10e], 0
+    1407fc56d: je 0x1407fc576
+    1407fc56f: mov rdx, qword ptr [rcx + 0x148]
+    1407fc576: cvtsi2ss xmm0, dword ptr [rsp + 0x38]
+    1407fc57c: mulss xmm0, dword ptr [rip + 0x64]
+    1407fc584: mulss xmm0, xmm7
+    1407fc588: addss xmm0, dword ptr [rcx + 0x14]
+    1407fc58d: movss xmm1, dword ptr [rip + 0x5b]
+    1407fc595: xorps xmm2, xmm2
+    1407fc598: comiss xmm0, xmm2
+    1407fc59b: jae 0x1407fc5a3
+    1407fc59d: addss xmm0, xmm1
+    1407fc5a1: jmp 0x1407fc598
+    1407fc5a3: comiss xmm0, xmm1
+    1407fc5a6: jb 0x1407fc5ae
+    1407fc5a8: subss xmm0, xmm1
+    1407fc5ac: jmp 0x1407fc5a3
+    1407fc5ae: maxss xmm0, dword ptr [rdx + 0x20]
+    1407fc5b3: minss xmm0, dword ptr [rdx + 0x24]
+    1407fc5b8: movss dword ptr [rcx + 0x14], xmm0
+    1407fc5bd: cvtsi2ss xmm0, dword ptr [rsp + 0x3c]
+    1407fc5c3: mulss xmm0, dword ptr [rip + 0x21]
+    1407fc5cb: mulss xmm0, xmm7
+    1407fc5cf: addss xmm0, dword ptr [rcx + 0x10]
+    1407fc5d4: maxss xmm0, dword ptr [rdx + 4]
+    1407fc5d9: minss xmm0, dword ptr [rdx + 8]
+    1407fc5de: movss dword ptr [rcx + 0x10], xmm0
+    1407fc5e3: jmp 0x1407fc4ba
+    1407fc5e8: add byte ptr [rax], al
+    1407fc5ea: mov ah, 0x42
+    1407fc5ec: add byte ptr [rax], al
+    1407fc5ee: xor al, 0x42
+    1407fc5f0: add byte ptr [rax], al
+    1407fc5f2: mov ah, 0x43
+    1407fc5f4: nop 
+    1407fc5f5: nop 
+    1407fc5f6: nop 
+    1407fc5f7: nop 
+
+Data\XML\GameConstants.xml (written from the game's own MEG archives):
+  <Land_Tactical_Camera_Locked> True -> False  (land battles use the "Unlocked" camera)
+
+Data\XML\TacticalCameras.xml (written from the game's own MEG archives), "Unlocked" camera replaced with:
+
+  	<!-- Unlocked = copy of Land_Mode (used for land when Land_Tactical_Camera_Locked is False), pitch freed, splines off; draw distance kept at stock Unlocked values (main menu uses this camera) -->
+  	<TacticalCamera Name="Unlocked">
+  
+  		<Pitch_Default>50</Pitch_Default>  <!-- 45 -->
+  		<Pitch_Min>10</Pitch_Min> <!-- 45 -->
+  		<Pitch_Max>85</Pitch_Max> <!-- 85 -->
+  		<Pitch_Per_Mouse_Unit>-1.5</Pitch_Per_Mouse_Unit>
+          <Pitch_Per_Zoom_Unit>-30.0</Pitch_Per_Zoom_Unit>   <!-- -17 -->
+          <Pitch_When_Zoomed_In>15.0</Pitch_When_Zoomed_In>
+          <Pitch_Zoom_Begin_Fraction>0.1</Pitch_Zoom_Begin_Fraction>
+  
+  		<Yaw_Default>0.0</Yaw_Default>
+  		<Yaw_Min>-1000.0</Yaw_Min>
+  		<Yaw_Max>1000.0</Yaw_Max>
+  		<Yaw_Per_Mouse_Unit>1.5</Yaw_Per_Mouse_Unit>
+  		
+  		<Fov_Default>55.0</Fov_Default>
+  		<Fov_Max>55.0</Fov_Max>
+  		<Fov_Min>25.0</Fov_Min>
+  		<Fov_Smooth_Time>0.05</Fov_Smooth_Time>
+  		<Fov_Per_Mouse_Unit>0</Fov_Per_Mouse_Unit>   <!-- 12.5 -->
+  		
+  		<Distance_Default>460.0</Distance_Default> 
+  		<Distance_Max>460.0</Distance_Max>   <!-- 450  -->
+  		<Distance_Min>170.0</Distance_Min>
+  		<Distance_Smooth_Time>0.21</Distance_Smooth_Time>
+  		<Distance_Per_Mouse_Unit>100.0</Distance_Per_Mouse_Unit>  <!-- 70 -->
+  
+          <!-- Land mode uses a spline for the distance and pitch -->
+          <Use_Splines>no</Use_Splines>
+          <Pitch_Spline>   0.0,27.0, 0.35,45.0, 1.0, 55.0, 1.1,55 </Pitch_Spline>
+          <Distance_Spline>0.0 170.0, 0.3, 220.0, 1.0, 460.0 </Distance_Spline>   <!-- compensating for zoom-in creep bug  -->
+          <Spline_Steps>15</Spline_Steps>
+  
+          <Tactical_Overview_Distance>1000.0</Tactical_Overview_Distance>
+          <Tactical_Overview_Pitch>65.0</Tactical_Overview_Pitch>
+          <Tactical_Overview_FOV>55.0</Tactical_Overview_FOV>
+          <Tactical_Overview_Clicks>4</Tactical_Overview_Clicks>              <!-- code expects this many clicks --> 
+          <Tactical_Overview_Click_Time>1.5</Tactical_Overview_Click_Time>    <!-- within this amount of time -->
+  
+          <Tactical_Overview_Distance2>1600.0</Tactical_Overview_Distance2>
+          <Tactical_Overview_Pitch2>80.0</Tactical_Overview_Pitch2>
+          <Tactical_Overview_FOV2>70.0</Tactical_Overview_FOV2>
+  
+          <!-- smoothness of terrain height following -->
+  		<Location_Follows_Terrain>1</Location_Follows_Terrain>
+  		<Location_Height_Up_Smooth_Time>0.3</Location_Height_Up_Smooth_Time>
+          <Location_Height_Down_Smooth_Time>1.0</Location_Height_Down_Smooth_Time>
+          <Min_Height_Above_Terrain>20.0</Min_Height_Above_Terrain>
+  
+  		<Near_Clip>10.0</Near_Clip>
+  		<Far_Clip>60000.0</Far_Clip>	
+  
+          <Object_Fade_Begin>10000.0f</Object_Fade_Begin>
+          <Object_Fade_End>11000.0f</Object_Fade_End>
+          
+          <Side_Bounds_Buffer>0.0f</Side_Bounds_Buffer>
+          <Top_Bounds_Buffer>0.0f</Top_Bounds_Buffer>
+          <Bottom_Bounds_Buffer>0.0f</Bottom_Bounds_Buffer>
+  
+  	</TacticalCamera>
+
